@@ -1,0 +1,24 @@
+hostname P
+!         
+ip cef
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.255
+!
+interface Ethernet0/0
+ description R2
+ ip address 10.2.3.2 255.255.255.252
+ duplex auto
+ mpls ip
+!
+interface Ethernet0/1
+ ip address 10.3.4.1 255.255.255.252
+ duplex auto
+ mpls ip
+!
+router ospf 1
+ network 3.3.3.3 0.0.0.0 area 0
+ network 10.2.3.0 0.0.0.255 area 0
+ network 10.3.4.0 0.0.0.255 area 0
+!
+end
