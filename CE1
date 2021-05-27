@@ -1,0 +1,15 @@
+Host name CE1
+!
+interface Ethernet0/0
+ no ip address
+ duplex auto
+!
+interface Ethernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.1.1 255.255.255.0
+!
+interface Ethernet0/0.20
+ encapsulation dot1Q 20
+ ip address 172.16.1.1 255.255.255.0
+!
+CE1#  
