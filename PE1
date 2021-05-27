@@ -1,0 +1,31 @@
+Hostname PE1
+!   
+ip cef
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+!
+interface Ethernet0/0
+ no ip address
+ duplex auto
+ no keepalive
+!
+interface Ethernet0/0.10
+ encapsulation dot1Q 10
+ xconnect 4.4.4.4 10 encapsulation mpls
+!
+interface Ethernet0/0.20
+ encapsulation dot1Q 20
+ xconnect 4.4.4.4 20 encapsulation mpls
+!
+interface Ethernet0/1
+ description R3
+ ip address 10.2.3.1 255.255.255.252
+ duplex auto
+ mpls ip
+!
+router ospf 1
+ network 2.2.2.2 0.0.0.0 area 0
+ network 10.2.3.0 0.0.0.255 area 0
+!
+end
